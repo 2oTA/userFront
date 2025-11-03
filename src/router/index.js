@@ -7,6 +7,9 @@ import AppealView from '../views/AppealView.vue';
 import AppealDetailView from '../views/AppealDetailView.vue';
 import ReportView from '../views/ReportView.vue';
 import VideoView from '../views/VideoView.vue';
+import ScheduleView from '../views/ScheduleView.vue';
+import RulesView from '../views/RulesView.vue';
+import ProfileView from '../views/ProfileView.vue';
 
 const routes = [
   {
@@ -47,6 +50,21 @@ const routes = [
     path: '/video',
     name: 'Video',
     component: VideoView
+  },
+  {
+    path: '/schedule',
+    name: 'Schedule',
+    component: ScheduleView
+  },
+  {
+    path: '/rules',
+    name: 'Rules',
+    component: RulesView
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: ProfileView
   }
 ];
 

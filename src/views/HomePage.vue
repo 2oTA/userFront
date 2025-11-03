@@ -1,11 +1,11 @@
 <template>
-  <v-container class="home-bg" style="width: 100%; margin: 0 auto;">
-  <v-container class="py-6 home-bg" style="width: 92%; max-width: 600px; margin: 0 auto;">
+  <v-container class="home-bg" fluid style="width: 100%; margin: 0 auto;">
+  <v-container class="py-6 home-bg" fluid style="width: 92%; max-width: 600px; margin: 0 auto;">
     <!-- 用户卡片 -->
     <v-card class="mb-6 px-4 pt-4 pb-4 card-shadow" elevation="6" style="background: #ffffff; border-radius: 15px;">
       <v-row align="center" justify="space-between">
         <v-row align="center" no-gutters>
-          <v-avatar size="36">
+          <v-avatar size="36" style="cursor: pointer;" @click="goToProfile">
             <v-img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
           </v-avatar>
           <div class="ml-3">
@@ -50,7 +50,7 @@ const username = ref('');
 onMounted(() => {
   const user = JSON.parse(localStorage.getItem('user'));
   if (user) {
-    name.value = user.name;
+    name.value = user.realName;
     username.value = user.username;
   } else {
     router.push('/login');
@@ -68,6 +68,14 @@ const features = [
     route: '/signin'
   },
   {
+    icon: 'mdi-calendar-clock',
+    color: '#ff6b6b',
+    bg: '#ffe8e8',
+    title: '赛事安排',
+    desc: '查看比赛时间安排表',
+    route: '/schedule'
+  },
+  {
     icon: 'mdi-file-document-outline',
     color: '#34c759',
     bg: '#e8fbe8',
@@ -76,25 +84,29 @@ const features = [
     route: '/report'
   },
   {
-    icon: 'mdi-gavel',
-    color: '#ff9800',
-    bg: '#fff7e6',
-    title: '申诉功能',
-    desc: '提交成绩争议申诉',
-    route: '/appeal'
-  },
-  {
     icon: 'mdi-video',
     color: '#a259ff',
     bg: '#f5e8ff',
     title: '比赛录像',
     desc: '查看录像回放',
     route: '/video'
+  },
+  {
+    icon: 'mdi-book-open-variant',
+    color: '#ff9800',
+    bg: '#fff3e0',
+    title: '参赛规章',
+    desc: '查看比赛规则和制度',
+    route: '/rules'
   }
 ]
 
 function goFeature(route) {
   if (route) router.push(route);
+}
+
+function goToProfile() {
+  router.push('/profile');
 }
 </script>
 
